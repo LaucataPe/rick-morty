@@ -1,0 +1,58 @@
+.nav{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 40px 30px;
+    padding: 5px 20px;
+    background:rgba(255, 255, 255, 0.1);
+    border: 0.1px solid #ffffff74;
+    border-radius: 1rem;
+}
+
+.nav button{
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: #fff;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+    width: 100px;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.home{
+    width: 20%;
+}
+
+.home img{
+    height: 100px;
+}
+
+.about{
+    position: absolute;
+    right: 20px;
+    color: #141b73;
+}
+
+.search{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchbar{
+    font-size: 1.5rem;
+    height: 40px;
+    width: 50%;
+    border-radius: 1rem;
+    border: none;
+    background:rgb(255, 255, 255, 0.2);
+    margin: 0px 20px;
+    padding: 5px;
+    color: #ffffff84;
+}
+
+
+
+
