@@ -1,0 +1,31 @@
+.filters{
+    display: flex;
+    justify-content: right;
+    height: 30px;
+    width: 30%;
+}
+
+.filters select{
+    margin: 0px 15px;
+    padding: 5px;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 10px 0 #232ca7;
+    color: #000000e3;   
+    background:rgb(255, 255, 255);  
+}
+
+.filters button{
+    cursor: pointer;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    width: 100px;
+    border-radius: 0.3rem;  
+    font-family: 'Roboto', sans-serif;  
+    margin-left: 15px;
+}
+
+.noChars{
+    text-align: center; 
+    color: #ffffff72;
+}

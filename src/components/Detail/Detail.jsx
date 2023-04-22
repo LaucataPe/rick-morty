@@ -2,7 +2,10 @@ import axios from 'axios';
 import {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import loc from '../../img/loc.png'
+import back from '../../img/back.png'
 import styles from './Detail.module.css'
+
+import { Link } from 'react-router-dom';
 
 /*API*/
 const url = 'https://be-a-rym.up.railway.app/api/character';
@@ -13,7 +16,7 @@ export default function Detail() {
   const [character, setCharacter] = useState({});
 
   useEffect(() => {
-    axios(`${url}/${id}?key=${key}`).then(({ data }) => {
+    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
        if (data.name) {
           setCharacter(data);
        } else {
@@ -23,6 +26,7 @@ export default function Detail() {
     return setCharacter({});
   }, [id]);
 
+    const {origin} = character;
     return (
       <>
         <div className={styles.detail}>
@@ -33,11 +37,12 @@ export default function Detail() {
             <p className={styles.species}><strong>Especie: </strong>{character.species}</p>
           </div>
           <h1>{character.name}</h1>
-          <p className={styles.origen}><img src={loc} alt="icono location"/><span>Buscando...</span></p>
+          <p className={styles.origen}><img src={loc} alt="icono location"/>{origin}</p>
           </div>
 
           <img src={character.image} alt={character.name}/>
         </div>
+        <Link to='/home'><img src={back} alt="back icon" className={styles.back}/></Link>
       </>
     );
 }

@@ -1,3 +1,8 @@
+.back{
+    height: 30px;
+    margin-left: 10%;
+}
+
 .detail{
     width: 100%;
     display: flex;
@@ -46,7 +51,7 @@
 }
 
 .species{
-    background-color: rgba(130, 148, 238, 0.597);
+    background-color: #8294ee98;
 }
 
 .origen{

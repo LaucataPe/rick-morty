@@ -12,7 +12,7 @@ const About = () =>{
             <p className={styles.species}><strong>Especie: </strong>Human</p>
           </div>
           <h1>Laura Pérez</h1>
-          <p className={styles.origen}><img src={loc} alt="icono location"/><span>Bogotá - Earth</span></p>
+          <p className={styles.origen}><img src={loc} alt="icono location"/><span>Bogotá - Earth (C-137)</span></p>
           </div>
 
           <img src={yo} alt='Mi foto'/>

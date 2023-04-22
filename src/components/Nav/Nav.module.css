@@ -1,12 +1,13 @@
 .nav{
-    position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin: 40px 30px;
     padding: 5px 20px;
     background:rgba(255, 255, 255, 0.1);
     border: 0.1px solid #ffffff74;
     border-radius: 1rem;
+    height: 75px;
 }
 
 .nav button{
@@ -20,22 +21,27 @@
     border: none;
 }
 
-.home{
-    width: 20%;
+.left{
+    display: flex;
+    align-items: center;
+    width: 25%;
+    position: relative;
 }
+
+.right{
+    display: flex;
+    align-items: center;
+    width: 25%;
+    position: relative;
+}
+
 
 .home img{
     height: 100px;
 }
 
-.about{
-    position: absolute;
-    right: 20px;
-    color: #141b73;
-}
-
 .search{
-    width: 60%;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,6 +57,20 @@
     margin: 0px 20px;
     padding: 5px;
     color: #ffffff84;
+}
+
+.heart{
+    height: 40px;
+    position: absolute;
+    right: 20px;
+    top: 35px;
+}
+
+.log{
+    height: 40px;
+    position: absolute;
+    right: 20px;
+    top: 0;
 }
 
 

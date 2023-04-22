@@ -1,8 +1,9 @@
 /* Funcionamiento */ 
 import './App.css';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import axios from 'axios';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 /*Redux*/
 import { connect } from "react-redux";
@@ -18,8 +19,8 @@ import Form from './components/Form/Form';
 import Favorites from './components/Favorites/Favorites';
 
 /*API*/
-const URL = 'https://be-a-rym.up.railway.app/api/character';
-const KEY = 'c5e0b28c0acc.03d24138fac376f12a97';
+//const URL = 'https://be-a-rym.up.railway.app/api/character';
+//const KEY = 'c5e0b28c0acc.03d24138fac376f12a97';
 
 function App({removeFav}) {
    const {pathname} = useLocation();
@@ -27,33 +28,28 @@ function App({removeFav}) {
 
    const navigate = useNavigate();
    const [access, setAccess] = useState(false);
-   const EMAIL = 'laucata@gmail.com';
-   const PASSWORD = 'Pass12sd';
 
    function login(userData) {
-      console.log(userData);
-      if (userData.password === PASSWORD && userData.email === EMAIL) {
-         setAccess(true);
-         console.log('Es correcto');
-         navigate('/home');
-      } else{
-         return alert('El usuario no está registrado')
-      }
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+         const { access } = data;
+         setAccess(data);
+         access && navigate('/home');
+      });
    }
 
    function onSearch(id) {
-      if(id > 826) return alert('¡La API contiene 826 personajes!');
-      let repeat = characters.filter( (character) => character.id === id)
-      if (repeat.length === 0) {
-         axios(`${URL}/${id}?key=${KEY}`).then(({ data }) => {
+      if(id > 826) return Swal.fire({title: 'La API contiene solo 826 personajes', icon: 'error',confirmButtonText: 'Cerrar'});
+      let repeat = characters.filter( (character) => character.id === +id)
+      if (repeat.length <= 0) {
+         axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
             if (data.name) {
                setCharacters((oldChars) => [...oldChars, data]);
-            } else {
-               window.alert('¡Ingresa un ID válido!');
             }
          });
       }else{
-         return alert('El personaje ya se encuentra en pantalla')
+         return Swal.fire({title: 'El personaje ya se encuentra en pantalla',icon: 'error',confirmButtonText: 'Cerrar'})
       } 
    }
 
@@ -62,14 +58,9 @@ function App({removeFav}) {
       removeFav(id)
    }
 
-   function Shownav({path}){
-      if (path !== '/') return <Nav onSearch={onSearch} userName={EMAIL}/>
-      return null
-   }
-
    return (
       <>
-      <Shownav path={pathname}/>
+      {pathname !== '/' && <Nav onSearch={onSearch} />}
       <Routes>
          <Route path='/' element={<Form login={login}/>}/>
          <Route path='/home' element={<Cards characters={characters} onClose={onClose} title="All Characters"/>}/>
@@ -83,6 +74,7 @@ function App({removeFav}) {
    );
 }
 
-const mapStateToProps = (state) => ({myFavorites: state.myFavorites})
+const mapStateToProps = (state) => ({allCharacters: state.allCharacters})
 const mapDispatchToProps = (dispatch) =>({removeFav: (id) => dispatch(removeFav(id))})
 export default connect(mapStateToProps,mapDispatchToProps)(App);
+

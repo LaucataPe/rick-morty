@@ -3,6 +3,7 @@ import { useState } from 'react';
 import validate from '../validation';
 import styles from './Form.module.css'
 import rick from '../../img/dap.png'
+import Swal from 'sweetalert2'
 
 export default function Form ({ login }) {
   const [userData, setuserData] = useState({ email: '', password: '' })
@@ -27,7 +28,7 @@ export default function Form ({ login }) {
         login(userData);
         setuserData({ email: '', password: '' })
     }else{
-        return alert('Los datos son inválidos')
+        return Swal.fire({title: 'Los datos no son correctos',icon: 'error',confirmButtonText: 'Cerrar'})
     }
   }
 
