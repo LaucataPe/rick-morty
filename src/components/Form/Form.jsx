@@ -28,7 +28,7 @@ export default function Form ({ login }) {
         login(userData);
         setuserData({ email: '', password: '' })
     }else{
-        return Swal.fire({title: 'Los datos no son correctos',icon: 'error',confirmButtonText: 'Cerrar'})
+        return Swal.fire({title: 'Data is incorrect',icon: 'error',confirmButtonText: 'Cerrar'})
     }
   }
 
@@ -51,7 +51,7 @@ export default function Form ({ login }) {
         <input type="text" name='password' className={errors.password} value={userData.password} onChange={handleChange} required/>
         {errors.password !== '' ? <p className={styles.danger}><strong>{errors.password}</strong></p> : <p></p> }
 
-        <button type="submit">Submit</button>
+        <button type="submit">Log In</button>
 
       </form>
     </div>

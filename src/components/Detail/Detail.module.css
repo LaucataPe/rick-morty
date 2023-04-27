@@ -42,12 +42,16 @@
     color: #fff;
 }
 
-.status{
-    background-color: rgba(0, 255, 255, 0.489);  
+.green{
+    background-color: rgba(21, 255, 0, 0.489);  
+}
+
+.red{
+    background-color: rgba(255, 0, 0, 0.591);
 }
 
 .gender{
-    background-color: rgba(0, 255, 42, 0.523);
+    background-color: rgba(0, 213, 255, 0.523);
 }
 
 .species{

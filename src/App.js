@@ -1,6 +1,6 @@
 /* Funcionamiento */ 
 import './App.css';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
@@ -29,27 +29,40 @@ function App({removeFav}) {
    const navigate = useNavigate();
    const [access, setAccess] = useState(false);
 
-   function login(userData) {
+   useEffect(() =>{
+      !access && navigate('/')
+   }, [access, navigate])
+
+   async function login(userData) {
       const { email, password } = userData;
       const URL = 'http://localhost:3001/rickandmorty/login/';
-      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+
+      try {
+         let response = await axios(URL + `?email=${email}&password=${password}`)
+         let data = response.data;
+         console.log(data);
          const { access } = data;
          setAccess(data);
+         if(!access) return Swal.fire({title:'User or password incorrect!', icon: 'error',confirmButtonText: 'Cerrar'});
          access && navigate('/home');
-      });
+      } catch (error) {
+       console.log(error);  
+      }
    }
 
-   function onSearch(id) {
-      if(id > 826) return Swal.fire({title: 'La API contiene solo 826 personajes', icon: 'error',confirmButtonText: 'Cerrar'});
+   async function onSearch(id) {
+      if(id > 826) return Swal.fire({title:'The API only contains 826 characters', icon: 'error',confirmButtonText: 'Cerrar'});
       let repeat = characters.filter( (character) => character.id === +id)
       if (repeat.length <= 0) {
-         axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
-            if (data.name) {
-               setCharacters((oldChars) => [...oldChars, data]);
-            }
-         });
-      }else{
-         return Swal.fire({title: 'El personaje ya se encuentra en pantalla',icon: 'error',confirmButtonText: 'Cerrar'})
+         try {
+            const response = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
+            const data = response.data;
+            if (data.name) {setCharacters((oldChars) => [...oldChars, data])}
+         } catch (error) {
+          console.log(error)  
+         }}
+         else{
+         return Swal.fire({title: 'The character is already on the screen',icon: 'error',confirmButtonText: 'Cerrar'})
       } 
    }
 

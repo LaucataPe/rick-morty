@@ -32,20 +32,23 @@ export function Card(props) {
    }
 
    return ( 
-      <div key={id} className={styles.card}>
-         {
-         isFav ? (
-         <button className={styles.like} onClick={() => handleFavorite(id)}>❤️</button>
-         ) : (
-         <button className={styles.like} onClick={() => handleFavorite(id)}>🤍</button>
-         )
-         }
-         <img src={image} alt={name}/> 
-         {onClose !== false && <button className={styles.close} onClick={() => onClose(id)}>X</button>}
-         <h2>Name: {name}</h2>
-         <h2>Status: {status}</h2>        
-         <Link to={`/detail/${id}`}><button className={styles.info}>More info +</button></Link>
-      </div>
+      <>
+         
+         <div key={id} className={styles.card}>
+            {
+            isFav ? (
+            <button className={styles.like} onClick={() => handleFavorite(id)}>❤️</button>
+            ) : (
+            <button className={styles.like} onClick={() => handleFavorite(id)}>🤍</button>
+            )
+            }
+            <img src={image} alt={name} className={styles.image}/> 
+            {onClose !== false && <button className={styles.close} onClick={() => onClose(id)}>X</button>}
+            <h2>Name: {name}</h2>
+            <h2>Status: {status}</h2>        
+            <Link to={`/detail/${id}`}><button className={styles.info}>More info +</button></Link>
+         </div>
+      </>
    );
 }
 

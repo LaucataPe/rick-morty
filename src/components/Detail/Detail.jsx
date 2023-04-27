@@ -26,13 +26,17 @@ export default function Detail() {
     return setCharacter({});
   }, [id]);
 
+    let color;
+    if (character.status === "Alive"){color = styles.green}
+    else{ color = styles.red}
+
     const {origin} = character;
     return (
       <>
         <div className={styles.detail}>
           <div className={styles.text}>          
           <div className={styles.info}>
-            <p className={styles.status}><strong>Status: </strong>{character.status}</p>
+            <p className={color}><strong>Status: </strong>{character.status}</p>
             <p className={styles.gender}><strong>Gender: </strong>{character.gender}</p>
             <p className={styles.species}><strong>Especie: </strong>{character.species}</p>
           </div>
