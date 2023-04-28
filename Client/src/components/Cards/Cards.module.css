@@ -12,24 +12,19 @@
 }
 
 .card{
-    margin: 30px;
-    padding: 1.5rem;
+    margin: 20px 20px 80px 20px;
     position: relative;
-    background:rgba(140, 138, 138, 0.357);
-    backdrop-filter: blur(100px);
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .5);
-    border-radius: 0.5rem;
-    color: #fff;
-    font-size: 0.7rem;
-}
-
-.card:hover{
-    box-shadow: 0 0 15px 0 #22ff00d3;
 }
 
 .image{
     border-radius: 0.5rem;
-    width: 250px;
+    width: 300px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.image:hover{
+    box-shadow: 0 0 20px 0 #22ff00d3;
+    transform: scale(1.1);
 }
 
 .close{
@@ -37,34 +32,65 @@
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #ffffff00;
+    border-radius: 0.5rem;
+    background-color: #ffffff25;
     border: none;
     font-size: 1.5rem;
-    color: #ffffff92;
+    color: #0000008e;
 }
 
-.info{
-    cursor: pointer;
-    width: 100%;
-    padding: 5px;
-    background-color: #181f7b9d;
-    border: none;
-    border-radius: 0.3rem;
-    color: #fff;
-    text-transform: uppercase;
+.text{
+    background-color: #ffffff1b;
+    border-radius: 1rem;
+    margin: 0px 10px;
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    padding: 15px;   
+    width: 250px;
+    backdrop-filter: blur(20px);
 }
 
-.info:hover{
-    background-color:#fff;
-    color: #181f7b9d;
+.text:hover{
+    box-shadow: 0 0 15px 0 #ffffffd3;
+}
+
+.text h2{
+    margin: 0px;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 15px;
+}
+
+.status{
+    font-size: 1rem;
+    margin: 0px;
+    color: #ffffffa7;
 }
 
 .like{
     cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 0;
+    top: 10px;
+    right: 0;
     background-color: #ffffff00;
     border: none;
     font-size: 1.4rem;
+    position: absolute;
+}
+
+.info{
+    cursor: pointer;
+    top: 60px;
+    right: 10px;
+    border: none;
+    font-size: 1.3rem;
+    position: absolute;
+    color: #fff;
+    background-color: #302b63;
+    border-radius: 0.2rem;
+}
+
+.info:hover{
+    color: #302b63;
+    background-color: #fff;
 }

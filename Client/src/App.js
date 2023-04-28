@@ -18,6 +18,7 @@ import Error from './components/Error'
 import Form from './components/Form/Form';
 import Favorites from './components/Favorites/Favorites';
 
+
 /*API*/
 //const URL = 'https://be-a-rym.up.railway.app/api/character';
 //const KEY = 'c5e0b28c0acc.03d24138fac376f12a97';
@@ -29,9 +30,20 @@ function App({removeFav}) {
    const navigate = useNavigate();
    const [access, setAccess] = useState(false);
 
-   useEffect(() =>{
+   /*useEffect(() =>{
       !access && navigate('/')
-   }, [access, navigate])
+   }, [access, navigate])*/
+
+   useEffect(() => {
+      async function clearFavs(){
+         try {
+            let response = await axios.delete('http://localhost:3001/rickandmorty/clear')
+         } catch (error) {
+          console.log(error);  
+         }
+      }
+      clearFavs()
+    }, []);
 
    async function login(userData) {
       const { email, password } = userData;

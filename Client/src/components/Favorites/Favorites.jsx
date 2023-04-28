@@ -7,7 +7,6 @@ import { useState } from "react";
 import styles from './Favorites.module.css'
 
 export function Favorites({myFavorites}) {
-    console.log(myFavorites);
     const dispatch = useDispatch()
     const [aux, setAux] = useState(false)
 
