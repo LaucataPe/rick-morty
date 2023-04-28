@@ -30,9 +30,9 @@ function App({removeFav}) {
    const navigate = useNavigate();
    const [access, setAccess] = useState(false);
 
-   /*useEffect(() =>{
+   useEffect(() =>{
       !access && navigate('/')
-   }, [access, navigate])*/
+   }, [access, navigate])
 
    useEffect(() => {
       async function clearFavs(){
@@ -55,7 +55,7 @@ function App({removeFav}) {
          console.log(data);
          const { access } = data;
          setAccess(data);
-         if(!access) return Swal.fire({title:'User or password incorrect!', icon: 'error',confirmButtonText: 'Cerrar'});
+         if(!access) return Swal.fire({title:'User or password incorrect!', icon: 'error',confirmButtonText: 'Close'});
          access && navigate('/home');
       } catch (error) {
        console.log(error);  
@@ -63,7 +63,7 @@ function App({removeFav}) {
    }
 
    async function onSearch(id) {
-      if(id > 826) return Swal.fire({title:'The API only contains 826 characters', icon: 'error',confirmButtonText: 'Cerrar'});
+      if(id > 826) return Swal.fire({title:'The API only contains 826 characters', icon: 'error',confirmButtonText: 'Close'});
       let repeat = characters.filter( (character) => character.id === +id)
       if (repeat.length <= 0) {
          try {
@@ -74,7 +74,7 @@ function App({removeFav}) {
           console.log(error)  
          }}
          else{
-         return Swal.fire({title: 'The character is already on the screen',icon: 'error',confirmButtonText: 'Cerrar'})
+         return Swal.fire({title: 'The character is already on the screen',icon: 'error',confirmButtonText: 'Close'})
       } 
    }
 

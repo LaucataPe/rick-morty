@@ -28,7 +28,7 @@ export default function Form ({ login }) {
         login(userData);
         setuserData({ email: '', password: '' })
     }else{
-        return Swal.fire({title: 'Data is incorrect',icon: 'error',confirmButtonText: 'Cerrar'})
+        return Swal.fire({title: 'Data is incorrect',icon: 'error',confirmButtonText: 'Close'})
     }
   }
 
