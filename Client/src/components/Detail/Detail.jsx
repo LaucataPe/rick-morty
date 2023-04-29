@@ -40,6 +40,7 @@ export default function Detail() {
             <p className={styles.gender}><strong>Gender: </strong>{character.gender}</p>
             <p className={styles.species}><strong>Especie: </strong>{character.species}</p>
           </div>
+          {/* <h5>#{character.id}</h5> */}
           <h1>{character.name}</h1>
           <p className={styles.origen}><img src={loc} alt="icono location"/>{origin}</p>
           </div>

@@ -48,7 +48,7 @@ export default function Form ({ login }) {
         {errors.email !== '' ? <p className={styles.danger}><strong>{errors.email}</strong></p> : <p></p> }
 
         <label htmlFor="password">Password</label>
-        <input type="text" name='password' className={errors.password} value={userData.password} onChange={handleChange} required/>
+        <input type="password" name='password' className={errors.password} value={userData.password} onChange={handleChange} required/>
         {errors.password !== '' ? <p className={styles.danger}><strong>{errors.password}</strong></p> : <p></p> }
 
         <button type="submit">Log In</button>

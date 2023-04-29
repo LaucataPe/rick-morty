@@ -80,7 +80,7 @@
 
 .info{
     cursor: pointer;
-    top: 60px;
+    bottom: 10px;
     right: 10px;
     border: none;
     font-size: 1.3rem;
